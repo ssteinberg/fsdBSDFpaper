@@ -1,0 +1,767 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<scene version="0.6.0" >
+
+	<default name="spp" value="1024"/>
+	<default name="fsd" value="true"/>
+
+	<!-- full city -->
+	<default name="resx" value="1002"/>
+	<!-- closeup -->
+	<!-- <default name="resx" value="783"/> -->
+
+	<default name="resy" value="668"/>
+
+<!-- Camera and Rendering Parameters -->
+	<integrator type="bdpt" >
+		<integer name="maxDepth" value="7" />
+		<boolean name="intensityDistribution" value="true" />
+		<spectrum name="wavelengths" value="1e-3" />
+	</integrator>
+
+	<sensor type="perspective" id="elm__2" name="elm__2">
+		<string name="fovAxis" value="x"/>
+		<float name="fov" value="39.597755"/>
+
+		<!-- full city -->
+		<transform name="toWorld">
+			<rotate x="1" angle="-151.55931587107668"/>
+			<rotate y="1" angle="-63.03309743475801"/>
+			<rotate z="1" angle="-179.999991348578"/>
+			<translate x="4.889790" y="3.622097" z="2.187363"/>
+		</transform>
+		<!-- closeup -->
+		<!-- <transform name="toWorld">
+			<rotate x="1" angle="88.45683054454051"/>
+			<rotate y="1" angle="-89.96908906829469"/>
+			<rotate z="1" angle="-0.014016353592239484"/>
+			<translate x="-0.490210" y="6.542097" z="-1.272640"/>
+		</transform> -->
+
+		<sampler type="independent" name="sampler">
+			<integer name="sampleCount" value="$spp"/>
+		</sampler>
+		<film type="hdrfilm" name="film">
+			<integer name="width" value="$resx"/>
+			<integer name="height" value="$resy"/>
+			<string name="fileFormat" value="openexr" />
+			<string name="pixelFormat" value="rgb" />
+			<boolean name="banner" value="false" />
+			<rfilter type="tent" />
+		</film>
+	</sensor>
+
+<!-- Materials -->
+
+	<bsdf type="twosided" id="mat-wire_115115115" name="mat-wire_115115115">
+		<bsdf type="diffuse" name="bsdf">
+			<rgb name="reflectance" value="0.125, 0.125, 0.125"/>
+		</bsdf>
+	</bsdf>
+	<bsdf type="twosided" id="mat-wire_255255255" name="mat-wire_255255255">
+		<bsdf type="diffuse" name="bsdf">
+			<rgb name="reflectance" value="0.125, 0.125, 0.125"/>
+		</bsdf>
+	</bsdf>
+
+	<bsdf type="freespacediffraction" id="mat-bg_1.001" name="mat-bg_1.001">
+		<boolean name="enabled" value="$fsd" />
+		<bsdf type="twosided">
+			<bsdf type="diffuse" name="bsdf">
+				<rgb name="reflectance" value="0.02, 0.02, 0.02"/>
+			</bsdf>
+		</bsdf>
+	</bsdf>
+	<bsdf type="freespacediffraction" id="mat-Material.001" name="mat-Material.001">
+		<boolean name="enabled" value="$fsd" />
+		<bsdf type="twosided">
+			<bsdf type="diffuse" name="bsdf">
+				<rgb name="reflectance" value="0.02, 0.02, 0.02"/>
+			</bsdf>
+		</bsdf>
+	</bsdf>
+	<bsdf type="freespacediffraction" id="mat-houseSG" name="mat-houseSG">
+		<boolean name="enabled" value="$fsd" />
+		<bsdf type="twosided">
+			<bsdf type="diffuse" name="bsdf">
+				<rgb name="reflectance" value="0.02, 0.02, 0.02"/>
+			</bsdf>
+		</bsdf>
+	</bsdf>
+	<bsdf type="twosided" id="default-bsdf" name="default-bsdf">
+	<bsdf type="twosided">
+		<bsdf type="diffuse" name="bsdf">
+			<rgb name="reflectance" value="0.02, 0.02, 0.02"/>
+		</bsdf>
+	</bsdf>
+	</bsdf>
+
+<!-- Emitters -->
+
+	<emitter type="point" id="elm__1" name="elm__1">
+		<point name="position" x="0.4761234521865845" y="1.5023725032806396" z="0.9403499364852905"/>
+		<rgb value="1000 1000 1000" name="intensity"/>
+	</emitter>
+
+<!-- Shapes -->
+
+	<shape type="ply" id="elm__4" name="elm__4">
+		<string name="filename" value="meshes/s1_Cube_011.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-bg_1.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__5" name="elm__5">
+		<string name="filename" value="meshes/s3_Cube_005.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-bg_1.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__6" name="elm__6">
+		<string name="filename" value="meshes/s4_Cube_013.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-bg_1.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__7" name="elm__7">
+		<string name="filename" value="meshes/s5_Cube_001.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-bg_1.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__8" name="elm__8">
+		<string name="filename" value="meshes/s6_Cube_021.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-bg_1.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__9" name="elm__9">
+		<string name="filename" value="meshes/s7_Cube_022.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-bg_1.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__10" name="elm__10">
+		<string name="filename" value="meshes/s5_Cube_002.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-bg_1.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__11" name="elm__11">
+		<string name="filename" value="meshes/s7_Cube_001.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-bg_1.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__12" name="elm__12">
+		<string name="filename" value="meshes/s7_Cube_002.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-bg_1.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__13" name="elm__13">
+		<string name="filename" value="meshes/s7_Cube_003.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-bg_1.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__14" name="elm__14">
+		<string name="filename" value="meshes/s7_Cube_004.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-bg_1.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__15" name="elm__15">
+		<string name="filename" value="meshes/s4_Cube_001.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-bg_1.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__16" name="elm__16">
+		<string name="filename" value="meshes/s4_Cube_002.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-bg_1.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__17" name="elm__17">
+		<string name="filename" value="meshes/s3_Cube_001.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-bg_1.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__18" name="elm__18">
+		<string name="filename" value="meshes/s1_Cube_001.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-bg_1.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__19" name="elm__19">
+		<string name="filename" value="meshes/s4_Cube_003.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-bg_1.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__20" name="elm__20">
+		<string name="filename" value="meshes/s4_Cube_004.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-bg_1.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__23" name="elm__23">
+		<string name="filename" value="meshes/inc3d_comm_tower-wire_115115115.ply"/>
+		<ref id="mat-wire_115115115" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__24" name="elm__24">
+		<string name="filename" value="meshes/inc3d_comm_tower-wire_255255255.ply"/>
+		<ref id="mat-wire_255255255" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__26" name="elm__26">
+		<string name="filename" value="meshes/shop.ply"/>
+		<ref id="mat-Material.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__27" name="elm__27">
+		<string name="filename" value="meshes/shop_001.ply"/>
+		<ref id="mat-Material.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__28" name="elm__28">
+		<string name="filename" value="meshes/shop_002.ply"/>
+		<ref id="mat-Material.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__29" name="elm__29">
+		<string name="filename" value="meshes/shop_003.ply"/>
+		<ref id="mat-Material.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__30" name="elm__30">
+		<string name="filename" value="meshes/shop_004.ply"/>
+		<ref id="mat-Material.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__31" name="elm__31">
+		<string name="filename" value="meshes/shop_005.ply"/>
+		<ref id="mat-Material.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__32" name="elm__32">
+		<string name="filename" value="meshes/shop_006.ply"/>
+		<ref id="mat-Material.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__33" name="elm__33">
+		<string name="filename" value="meshes/shop_007.ply"/>
+		<ref id="mat-Material.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__34" name="elm__34">
+		<string name="filename" value="meshes/s3_Cube_002.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-bg_1.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__35" name="elm__35">
+		<string name="filename" value="meshes/s3_Cube_003.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-bg_1.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__36" name="elm__36">
+		<string name="filename" value="meshes/shop_008.ply"/>
+		<ref id="mat-Material.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__37" name="elm__37">
+		<string name="filename" value="meshes/shop_009.ply"/>
+		<ref id="mat-Material.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__38" name="elm__38">
+		<string name="filename" value="meshes/shop_010.ply"/>
+		<ref id="mat-Material.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__39" name="elm__39">
+		<string name="filename" value="meshes/shop_011.ply"/>
+		<ref id="mat-Material.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__41" name="elm__41">
+		<string name="filename" value="meshes/House_01_OBJ.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__42" name="elm__42">
+		<string name="filename" value="meshes/House_01_OBJ_001.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__43" name="elm__43">
+		<string name="filename" value="meshes/House_01_OBJ_002.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__44" name="elm__44">
+		<string name="filename" value="meshes/House_01_OBJ_003.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__45" name="elm__45">
+		<string name="filename" value="meshes/House_01_OBJ_004.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__46" name="elm__46">
+		<string name="filename" value="meshes/House_01_OBJ_005.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__47" name="elm__47">
+		<string name="filename" value="meshes/House_01_OBJ_006.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__48" name="elm__48">
+		<string name="filename" value="meshes/House_01_OBJ_007.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__49" name="elm__49">
+		<string name="filename" value="meshes/House_01_OBJ_008.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__50" name="elm__50">
+		<string name="filename" value="meshes/House_01_OBJ_009.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__51" name="elm__51">
+		<string name="filename" value="meshes/House_01_OBJ_010.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__52" name="elm__52">
+		<string name="filename" value="meshes/House_01_OBJ_011.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__53" name="elm__53">
+		<string name="filename" value="meshes/House_01_OBJ_012.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__54" name="elm__54">
+		<string name="filename" value="meshes/House_01_OBJ_013.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__55" name="elm__55">
+		<string name="filename" value="meshes/House_01_OBJ_014.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__56" name="elm__56">
+		<string name="filename" value="meshes/House_01_OBJ_015.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__57" name="elm__57">
+		<string name="filename" value="meshes/House_01_OBJ_016.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__58" name="elm__58">
+		<string name="filename" value="meshes/House_01_OBJ_017.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__59" name="elm__59">
+		<string name="filename" value="meshes/House_01_OBJ_018.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__60" name="elm__60">
+		<string name="filename" value="meshes/House_01_OBJ_019.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__61" name="elm__61">
+		<string name="filename" value="meshes/House_01_OBJ_020.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__62" name="elm__62">
+		<string name="filename" value="meshes/House_01_OBJ_021.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__63" name="elm__63">
+		<string name="filename" value="meshes/House_01_OBJ_022.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__64" name="elm__64">
+		<string name="filename" value="meshes/House_01_OBJ_023.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__65" name="elm__65">
+		<string name="filename" value="meshes/House_01_OBJ_024.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__66" name="elm__66">
+		<string name="filename" value="meshes/House_01_OBJ_025.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__67" name="elm__67">
+		<string name="filename" value="meshes/House_01_OBJ_026.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__68" name="elm__68">
+		<string name="filename" value="meshes/House_01_OBJ_027.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__69" name="elm__69">
+		<string name="filename" value="meshes/House_01_OBJ_028.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__70" name="elm__70">
+		<string name="filename" value="meshes/House_01_OBJ_029.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__71" name="elm__71">
+		<string name="filename" value="meshes/House_01_OBJ_030.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__72" name="elm__72">
+		<string name="filename" value="meshes/House_01_OBJ_031.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__73" name="elm__73">
+		<string name="filename" value="meshes/House_01_OBJ_032.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__74" name="elm__74">
+		<string name="filename" value="meshes/House_01_OBJ_033.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__75" name="elm__75">
+		<string name="filename" value="meshes/House_01_OBJ_034.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__76" name="elm__76">
+		<string name="filename" value="meshes/House_01_OBJ_035.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__77" name="elm__77">
+		<string name="filename" value="meshes/House_01_OBJ_036.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__78" name="elm__78">
+		<string name="filename" value="meshes/House_01_OBJ_037.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__79" name="elm__79">
+		<string name="filename" value="meshes/House_01_OBJ_038.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__80" name="elm__80">
+		<string name="filename" value="meshes/House_01_OBJ_039.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__81" name="elm__81">
+		<string name="filename" value="meshes/shop_012.ply"/>
+		<ref id="mat-Material.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__82" name="elm__82">
+		<string name="filename" value="meshes/shop_013.ply"/>
+		<ref id="mat-Material.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__83" name="elm__83">
+		<string name="filename" value="meshes/shop_014.ply"/>
+		<ref id="mat-Material.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__84" name="elm__84">
+		<string name="filename" value="meshes/shop_015.ply"/>
+		<ref id="mat-Material.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__85" name="elm__85">
+		<string name="filename" value="meshes/shop_016.ply"/>
+		<ref id="mat-Material.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__86" name="elm__86">
+		<string name="filename" value="meshes/shop_017.ply"/>
+		<ref id="mat-Material.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__87" name="elm__87">
+		<string name="filename" value="meshes/shop_018.ply"/>
+		<ref id="mat-Material.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__88" name="elm__88">
+		<string name="filename" value="meshes/House_01_OBJ_040.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__89" name="elm__89">
+		<string name="filename" value="meshes/House_01_OBJ_041.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__90" name="elm__90">
+		<string name="filename" value="meshes/House_01_OBJ_042.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__91" name="elm__91">
+		<string name="filename" value="meshes/shop_019.ply"/>
+		<ref id="mat-Material.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__92" name="elm__92">
+		<string name="filename" value="meshes/shop_020.ply"/>
+		<ref id="mat-Material.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__94" name="elm__94">
+		<string name="filename" value="meshes/Plane_001.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="default-bsdf" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__95" name="elm__95">
+		<string name="filename" value="meshes/House_01_OBJ_043.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__96" name="elm__96">
+		<string name="filename" value="meshes/House_01_OBJ_044.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__97" name="elm__97">
+		<string name="filename" value="meshes/House_01_OBJ_045.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__98" name="elm__98">
+		<string name="filename" value="meshes/House_01_OBJ_046.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__99" name="elm__99">
+		<string name="filename" value="meshes/House_01_OBJ_047.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__100" name="elm__100">
+		<string name="filename" value="meshes/House_01_OBJ_048.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__101" name="elm__101">
+		<string name="filename" value="meshes/House_01_OBJ_049.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__102" name="elm__102">
+		<string name="filename" value="meshes/House_01_OBJ_050.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__103" name="elm__103">
+		<string name="filename" value="meshes/House_01_OBJ_051.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__104" name="elm__104">
+		<string name="filename" value="meshes/House_01_OBJ_052.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__105" name="elm__105">
+		<string name="filename" value="meshes/House_01_OBJ_053.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__106" name="elm__106">
+		<string name="filename" value="meshes/House_01_OBJ_054.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__107" name="elm__107">
+		<string name="filename" value="meshes/House_01_OBJ_055.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__108" name="elm__108">
+		<string name="filename" value="meshes/House_01_OBJ_056.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__109" name="elm__109">
+		<string name="filename" value="meshes/House_01_OBJ_057.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__110" name="elm__110">
+		<string name="filename" value="meshes/House_01_OBJ_058.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__111" name="elm__111">
+		<string name="filename" value="meshes/House_01_OBJ_059.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__112" name="elm__112">
+		<string name="filename" value="meshes/House_01_OBJ_060.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__113" name="elm__113">
+		<string name="filename" value="meshes/House_01_OBJ_061.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__114" name="elm__114">
+		<string name="filename" value="meshes/shop_021.ply"/>
+		<ref id="mat-Material.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__115" name="elm__115">
+		<string name="filename" value="meshes/shop_022.ply"/>
+		<ref id="mat-Material.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__116" name="elm__116">
+		<string name="filename" value="meshes/shop_023.ply"/>
+		<ref id="mat-Material.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__117" name="elm__117">
+		<string name="filename" value="meshes/House_01_OBJ_062.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__118" name="elm__118">
+		<string name="filename" value="meshes/House_01_OBJ_063.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__119" name="elm__119">
+		<string name="filename" value="meshes/House_01_OBJ_064.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__120" name="elm__120">
+		<string name="filename" value="meshes/House_01_OBJ_065.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__121" name="elm__121">
+		<string name="filename" value="meshes/House_01_OBJ_066.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__122" name="elm__122">
+		<string name="filename" value="meshes/House_01_OBJ_067.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__123" name="elm__123">
+		<string name="filename" value="meshes/House_01_OBJ_068.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__124" name="elm__124">
+		<string name="filename" value="meshes/House_01_OBJ_069.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__125" name="elm__125">
+		<string name="filename" value="meshes/House_01_OBJ_070.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__126" name="elm__126">
+		<string name="filename" value="meshes/House_01_OBJ_072.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__127" name="elm__127">
+		<string name="filename" value="meshes/House_01_OBJ_073.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__128" name="elm__128">
+		<string name="filename" value="meshes/House_01_OBJ_074.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__129" name="elm__129">
+		<string name="filename" value="meshes/House_01_OBJ_075.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__130" name="elm__130">
+		<string name="filename" value="meshes/s3_Cube_004.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-bg_1.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__131" name="elm__131">
+		<string name="filename" value="meshes/s3_Cube_006.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-bg_1.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__132" name="elm__132">
+		<string name="filename" value="meshes/s3_Cube_007.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-bg_1.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__133" name="elm__133">
+		<string name="filename" value="meshes/House_01_OBJ_076.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__134" name="elm__134">
+		<string name="filename" value="meshes/House_01_OBJ_077.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__135" name="elm__135">
+		<string name="filename" value="meshes/s4_Cube_005.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-bg_1.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__136" name="elm__136">
+		<string name="filename" value="meshes/s4_Cube_006.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-bg_1.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__137" name="elm__137">
+		<string name="filename" value="meshes/shop_024.ply"/>
+		<ref id="mat-Material.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__138" name="elm__138">
+		<string name="filename" value="meshes/shop_025.ply"/>
+		<ref id="mat-Material.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__139" name="elm__139">
+		<string name="filename" value="meshes/House_01_OBJ_078.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__140" name="elm__140">
+		<string name="filename" value="meshes/House_01_OBJ_079.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__141" name="elm__141">
+		<string name="filename" value="meshes/House_01_OBJ_080.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__142" name="elm__142">
+		<string name="filename" value="meshes/shop_026.ply"/>
+		<ref id="mat-Material.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__143" name="elm__143">
+		<string name="filename" value="meshes/House_01_OBJ_071.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__144" name="elm__144">
+		<string name="filename" value="meshes/House_01_OBJ_081.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__145" name="elm__145">
+		<string name="filename" value="meshes/House_01_OBJ_082.ply"/>
+		<boolean name="faceNormals" value="true"/>
+		<ref id="mat-houseSG" name="bsdf"/>
+	</shape>
+
+<!-- Volumes -->
+
+</scene>
