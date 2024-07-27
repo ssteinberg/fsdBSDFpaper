@@ -15,8 +15,8 @@ Mitsuba comes with a command-line interface as well as a graphical frontend to i
 
 ## Documentation
 
-For compilation, usage, and a full plugin reference, please see the [official documentation](http://mitsuba-renderer.org/docs.html).
+For compilation, usage, and a full plugin reference, please see the [official documentation](https://mitsuba-renderer.org/docs.html).
 
 ## Releases and scenes
 
-Pre-built binaries, as well as example scenes, are available on the [Mitsuba website](http://mitsuba-renderer.org/download.html).
+Pre-built binaries, as well as example scenes, are available on the [Mitsuba website](https://mitsuba-renderer.org/download.html).
